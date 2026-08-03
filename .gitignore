@@ -7,5 +7,6 @@ DerivedData/
 .swiftpm/
 *.xcuserstate
 xcuserdata/
+.worktrees/
 App/Info.plist
 Widget/Info.plist
