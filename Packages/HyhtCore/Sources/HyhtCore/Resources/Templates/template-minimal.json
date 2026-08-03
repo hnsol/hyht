@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "id": "minimal",
+  "displayName": "Minimal",
+  "style": {
+    "backgroundColorHex": "#FFFFFF",
+    "primaryTextColorHex": "#000000",
+    "secondaryTextColorHex": "#6E6E73",
+    "primaryValueFontSize": 36,
+    "eventNameFontSize": 13,
+    "emojiFontSize": 18,
+    "fontWeight": "regular",
+    "fontDesign": "default"
+  },
+  "families": {
+    "systemSmall": {
+      "alignment": "center",
+      "padding": 12,
+      "spacing": 4,
+      "elementOrder": ["emoji", "eventName", "primaryValue", "unit"],
+      "showsEventName": true,
+      "showsEmoji": true,
+      "showsUnit": true
+    },
+    "systemMedium": {
+      "alignment": "center",
+      "padding": 16,
+      "spacing": 6,
+      "elementOrder": ["emoji", "eventName", "primaryValue", "unit"],
+      "showsEventName": true,
+      "showsEmoji": true,
+      "showsUnit": true
+    },
+    "accessoryCircular": {
+      "alignment": "center",
+      "padding": 4,
+      "spacing": 0,
+      "elementOrder": ["primaryValue", "unit"],
+      "showsEventName": false,
+      "showsEmoji": false,
+      "showsUnit": true
+    },
+    "accessoryRectangular": {
+      "alignment": "leading",
+      "padding": 6,
+      "spacing": 2,
+      "elementOrder": ["emoji", "eventName", "primaryValue", "unit"],
+      "showsEventName": true,
+      "showsEmoji": true,
+      "showsUnit": true
+    }
+  },
+  "completion": {
+    "message": "Done",
+    "emoji": "✅",
+    "backgroundColorHex": "#FFFFFF",
+    "primaryTextColorHex": "#000000",
+    "secondaryTextColorHex": "#6E6E73",
+    "eventNameFontSize": 14,
+    "messageFontSize": 20,
+    "emojiFontSize": 32,
+    "alignment": "center"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "id": "bold",
+  "displayName": "Bold",
+  "style": {
+    "backgroundColorHex": "#111111",
+    "primaryTextColorHex": "#FFFFFF",
+    "secondaryTextColorHex": "#FF3B30",
+    "primaryValueFontSize": 44,
+    "eventNameFontSize": 13,
+    "emojiFontSize": 18,
+    "fontWeight": "heavy",
+    "fontDesign": "default"
+  },
+  "families": {
+    "systemSmall": {
+      "alignment": "center",
+      "padding": 10,
+      "spacing": 3,
+      "elementOrder": ["emoji", "eventName", "primaryValue", "unit"],
+      "showsEventName": true,
+      "showsEmoji": true,
+      "showsUnit": true
+    },
+    "systemMedium": {
+      "alignment": "center",
+      "padding": 14,
+      "spacing": 4,
+      "elementOrder": ["emoji", "eventName", "primaryValue", "unit"],
+      "showsEventName": true,
+      "showsEmoji": true,
+      "showsUnit": true
+    },
+    "accessoryCircular": {
+      "alignment": "center",
+      "padding": 2,
+      "spacing": 0,
+      "elementOrder": ["primaryValue", "unit"],
+      "showsEventName": false,
+      "showsEmoji": false,
+      "showsUnit": true
+    },
+    "accessoryRectangular": {
+      "alignment": "leading",
+      "padding": 4,
+      "spacing": 2,
+      "elementOrder": ["emoji", "eventName", "primaryValue", "unit"],
+      "showsEventName": true,
+      "showsEmoji": true,
+      "showsUnit": true
+    }
+  },
+  "completion": {
+    "message": "TIME'S UP",
+    "emoji": "🔥",
+    "backgroundColorHex": "#111111",
+    "primaryTextColorHex": "#FFFFFF",
+    "secondaryTextColorHex": "#FF3B30",
+    "eventNameFontSize": 16,
+    "messageFontSize": 26,
+    "emojiFontSize": 36,
+    "alignment": "center"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "sourceLanguage" : "ja",
+  "strings" : {
+    "Counts down to your event." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Counts down to your event."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "イベントまでのカウントダウン。"
+          }
+        }
+      }
+    },
+    "Hyht" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hyht"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hyht"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

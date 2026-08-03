@@ -1,0 +1,244 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "%1$@ is complete. %2$@" : {
+      "comment" : "VoiceOver label for a completed countdown with a completion message. %1$@ is the event name, %2$@ is the completion message.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ is complete. %2$@"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@は完了。%2$@"
+          }
+        }
+      }
+    },
+    "%1$@ days until %2$@" : {
+      "comment" : "VoiceOver label for a countdown in day mode. %1$@ is the number of days remaining, %2$@ is the event name.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ days until %2$@"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%2$@まで残り%1$@日"
+          }
+        }
+      }
+    },
+    "%1$@ hours until %2$@" : {
+      "comment" : "VoiceOver label for a countdown in hour mode. %1$@ is the number of hours remaining, %2$@ is the event name.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ hours until %2$@"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%2$@まで残り%1$@時間"
+          }
+        }
+      }
+    },
+    "%1$@ is complete." : {
+      "comment" : "VoiceOver label for a completed countdown with no completion message. %1$@ is the event name.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ is complete."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@は完了。"
+          }
+        }
+      }
+    },
+    "%1$@ weeks until %2$@" : {
+      "comment" : "VoiceOver label for a countdown in week mode. %1$@ is the number of weeks remaining, %2$@ is the event name.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ weeks until %2$@"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%2$@まで残り%1$@週間"
+          }
+        }
+      }
+    },
+    "%1$@, %2$@ minutes remaining" : {
+      "comment" : "VoiceOver label for a countdown in minute mode. %1$@ is the event name, %2$@ is the number of minutes remaining.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@, %2$@ minutes remaining"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@、残り%2$@分"
+          }
+        }
+      }
+    },
+    "%1$@, %2$d hours %3$d minutes remaining" : {
+      "comment" : "VoiceOver label for a countdown in clock mode. %1$@ is the event name, %2$d is whole hours remaining, %3$d is whole minutes remaining.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@, %2$d hours %3$d minutes remaining"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@、残り%2$d時間%3$d分"
+          }
+        }
+      }
+    },
+    "%1$@ weeks remaining" : {
+      "comment" : "VoiceOver label for a countdown in week mode with no event name. %1$@ is the number of weeks remaining.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ weeks remaining"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "残り%1$@週間"
+          }
+        }
+      }
+    },
+    "%1$@ days remaining" : {
+      "comment" : "VoiceOver label for a countdown in day mode with no event name. %1$@ is the number of days remaining.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ days remaining"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "残り%1$@日"
+          }
+        }
+      }
+    },
+    "%1$@ hours remaining" : {
+      "comment" : "VoiceOver label for a countdown in hour mode with no event name. %1$@ is the number of hours remaining.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ hours remaining"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "残り%1$@時間"
+          }
+        }
+      }
+    },
+    "%1$d hours %2$d minutes remaining" : {
+      "comment" : "VoiceOver label for a countdown in clock mode with no event name. %1$d is whole hours remaining, %2$d is whole minutes remaining.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$d hours %2$d minutes remaining"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "残り%1$d時間%2$d分"
+          }
+        }
+      }
+    },
+    "%1$@ minutes remaining" : {
+      "comment" : "VoiceOver label for a countdown in minute mode with no event name. %1$@ is the number of minutes remaining.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ minutes remaining"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "残り%1$@分"
+          }
+        }
+      }
+    },
+    "Complete." : {
+      "comment" : "VoiceOver label for a completed countdown with no event name and no completion message.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Complete."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "完了。"
+          }
+        }
+      }
+    },
+    "Complete. %1$@" : {
+      "comment" : "VoiceOver label for a completed countdown with no event name but with a completion message. %1$@ is the completion message.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Complete. %1$@"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "完了。%1$@"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "id": "soft",
+  "displayName": "Soft",
+  "style": {
+    "backgroundColorHex": "#FFF1E6",
+    "primaryTextColorHex": "#5C4033",
+    "secondaryTextColorHex": "#8B5A2B",
+    "primaryValueFontSize": 32,
+    "eventNameFontSize": 13,
+    "emojiFontSize": 22,
+    "fontWeight": "medium",
+    "fontDesign": "rounded"
+  },
+  "families": {
+    "systemSmall": {
+      "alignment": "center",
+      "padding": 12,
+      "spacing": 4,
+      "elementOrder": ["emoji", "eventName", "primaryValue", "unit"],
+      "showsEventName": true,
+      "showsEmoji": true,
+      "showsUnit": true
+    },
+    "systemMedium": {
+      "alignment": "center",
+      "padding": 16,
+      "spacing": 8,
+      "elementOrder": ["emoji", "eventName", "primaryValue", "unit"],
+      "showsEventName": true,
+      "showsEmoji": true,
+      "showsUnit": true
+    },
+    "accessoryCircular": {
+      "alignment": "center",
+      "padding": 4,
+      "spacing": 0,
+      "elementOrder": ["primaryValue", "unit"],
+      "showsEventName": false,
+      "showsEmoji": false,
+      "showsUnit": true
+    },
+    "accessoryRectangular": {
+      "alignment": "leading",
+      "padding": 6,
+      "spacing": 4,
+      "elementOrder": ["emoji", "eventName", "primaryValue", "unit"],
+      "showsEventName": true,
+      "showsEmoji": true,
+      "showsUnit": true
+    }
+  },
+  "completion": {
+    "message": "やったね！",
+    "emoji": "🎉",
+    "backgroundColorHex": "#FFF1E6",
+    "primaryTextColorHex": "#5C4033",
+    "secondaryTextColorHex": "#8B5A2B",
+    "eventNameFontSize": 16,
+    "messageFontSize": 22,
+    "emojiFontSize": 40,
+    "alignment": "center"
+  }
+}

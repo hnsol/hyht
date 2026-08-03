@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "weekLowerBound": 1036830,
+  "dayLowerBound": 432030,
+  "hourLowerBound": 86430,
+  "clockLowerBound": 7200,
+  "weekRounding": "toFixed2",
+  "dayRounding": "toFixed2",
+  "hourRounding": "toFixed1",
+  "minRounding": "floor"
+}
