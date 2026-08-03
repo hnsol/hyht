@@ -1,8 +1,7 @@
 import HyhtCore
 import SwiftUI
 
-/// The app's single screen: a live preview plus the basic editing form.
-/// Detail/completion settings are pushed via `NavigationLink`.
+/// The app's single screen: a fixed live preview plus a compact editing form.
 struct EditView: View {
     @StateObject private var viewModel = EditViewModel()
     @State private var previewFamily: WidgetFamilyKey = .systemSmall
@@ -20,10 +19,9 @@ struct EditView: View {
                 case .containerUnavailable(let message):
                     containerUnavailableView(message)
                 case .ready:
-                    editForm
+                    editScreen
                 }
             }
-            .navigationTitle("Hyht")
         }
         .task {
             await viewModel.start()
@@ -40,92 +38,81 @@ struct EditView: View {
 
     // MARK: - Ready state
 
-    private var editForm: some View {
-        Form {
-            Section {
-                PreviewSectionView(
-                    eventName: viewModel.effectiveEventName,
-                    eventEmoji: viewModel.appState.event.emoji,
-                    deadline: viewModel.appState.event.deadline,
-                    template: viewModel.selectedTemplate,
-                    overrides: viewModel.appState.overrides,
-                    completion: viewModel.appState.completion,
-                    family: $previewFamily,
-                    isCompleted: $previewCompleted
-                )
-            }
+    private var editScreen: some View {
+        VStack(spacing: 0) {
+            fixedPreview
+            Divider()
 
-            Section("Event") {
-                TextField("Event Name", text: $viewModel.appState.event.name)
-                EmojiField(titleKey: "Emoji", text: $viewModel.appState.event.emoji)
-                DatePicker(
-                    "Deadline",
-                    selection: $viewModel.appState.event.deadline,
-                    displayedComponents: [.date, .hourAndMinute]
-                )
-                .environment(\.timeZone, eventTimeZone)
-            }
-
-            Section("Template") {
-                TemplatePickerView(
-                    templates: viewModel.templates,
-                    selectedID: $viewModel.appState.selectedTemplateID,
-                    eventName: viewModel.effectiveEventName,
-                    eventEmoji: viewModel.appState.event.emoji,
-                    deadline: viewModel.appState.event.deadline
-                )
-            }
-
-            Section {
-                ColorPicker(
-                    "Background",
-                    selection: colorBinding(\.backgroundColorHex, templateDefault: viewModel.selectedTemplate.style.backgroundColorHex)
-                )
-                ColorPicker(
-                    "Primary Text",
-                    selection: colorBinding(\.primaryTextColorHex, templateDefault: viewModel.selectedTemplate.style.primaryTextColorHex)
-                )
-                ColorPicker(
-                    "Secondary Text",
-                    selection: colorBinding(\.secondaryTextColorHex, templateDefault: viewModel.selectedTemplate.style.secondaryTextColorHex)
-                )
-            } header: {
-                Text("Colors")
-            } footer: {
-                Text("Colors apply to the Home Screen only.")
-            }
-
-            Section {
-                saveStatusView
-            }
-
-            Section {
-                NavigationLink("Detail Settings") {
-                    DetailSettingsView(viewModel: viewModel)
+            Form {
+                if previewCompleted {
+                    Section("Completion") {
+                        TextField("Display Text", text: $viewModel.appState.completion.message)
+                        EmojiField(titleKey: "Emoji", text: $viewModel.appState.completion.emoji)
+                        deadlinePicker
+                    }
+                } else {
+                    Section("Event") {
+                        TextField("Event Name", text: $viewModel.appState.event.name)
+                        EmojiField(titleKey: "Emoji", text: $viewModel.appState.event.emoji)
+                        deadlinePicker
+                    }
                 }
-                NavigationLink("Completion Screen") {
-                    CompletionSettingsView(viewModel: viewModel)
+
+                Section {
+                    TemplatePickerView(
+                        templates: viewModel.templates,
+                        selectedID: $viewModel.appState.selectedTemplateID,
+                        eventName: viewModel.effectiveEventName,
+                        eventEmoji: viewModel.appState.event.emoji,
+                        deadline: viewModel.appState.event.deadline,
+                        completion: viewModel.appState.completion,
+                        isCompleted: previewCompleted
+                    )
+                } header: {
+                    Text("Template")
+                } footer: {
+                    saveStatusView
                 }
             }
         }
     }
 
-    private var eventTimeZone: TimeZone {
-        TimeZone(identifier: viewModel.appState.event.timeZoneID) ?? .current
+    private var fixedPreview: some View {
+        VStack(spacing: 8) {
+            Text(verbatim: "Hyht［hyçt］ 希望。喜びを伴う期待、歓喜。")
+                .font(.caption)
+                .foregroundStyle(.secondary)
+                .lineLimit(1)
+                .minimumScaleFactor(0.75)
+                .frame(maxWidth: .infinity, alignment: .leading)
+
+            PreviewSectionView(
+                eventName: viewModel.effectiveEventName,
+                eventEmoji: viewModel.appState.event.emoji,
+                deadline: viewModel.appState.event.deadline,
+                template: viewModel.selectedTemplate,
+                completion: viewModel.appState.completion,
+                family: $previewFamily,
+                isCompleted: $previewCompleted
+            )
+        }
+        .padding(.horizontal, 16)
+        .padding(.top, 8)
+        .padding(.bottom, 12)
+        .background(Color(uiColor: .secondarySystemGroupedBackground))
     }
 
-    private func colorBinding(
-        _ keyPath: WritableKeyPath<StyleOverrides, String?>,
-        templateDefault: String
-    ) -> Binding<Color> {
-        Binding(
-            get: {
-                Color(hyhtHex: viewModel.appState.overrides[keyPath: keyPath] ?? templateDefault)
-            },
-            set: { newColor in
-                viewModel.appState.overrides[keyPath: keyPath] = newColor.hyhtHexString
-            }
+    private var deadlinePicker: some View {
+        DatePicker(
+            "Deadline",
+            selection: $viewModel.appState.event.deadline,
+            displayedComponents: [.date, .hourAndMinute]
         )
+        .environment(\.timeZone, eventTimeZone)
+    }
+
+    private var eventTimeZone: TimeZone {
+        TimeZone(identifier: viewModel.appState.event.timeZoneID) ?? .current
     }
 
     @ViewBuilder

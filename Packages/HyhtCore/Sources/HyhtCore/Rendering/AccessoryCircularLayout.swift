@@ -19,7 +19,7 @@ struct AccessoryCircularLayout: View {
     var body: some View {
         VStack(spacing: 0) {
             Text(topText)
-                .font(.system(size: Self.topFontSize, weight: .semibold, design: style.fontDesign.swiftUIDesign))
+                .font(.system(size: Self.topFontSize, weight: style.fontWeight.swiftUIWeight, design: style.fontDesign.swiftUIDesign))
                 .lineLimit(1)
                 .minimumScaleFactor(0.5)
             Text(bottomText)

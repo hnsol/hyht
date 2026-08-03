@@ -7,8 +7,8 @@
     "primaryTextColorHex": "#5C4033",
     "secondaryTextColorHex": "#8B5A2B",
     "primaryValueFontSize": 32,
-    "eventNameFontSize": 13,
-    "emojiFontSize": 22,
+    "eventNameFontSize": 14,
+    "emojiFontSize": 30,
     "fontWeight": "medium",
     "fontDesign": "rounded"
   },
@@ -16,7 +16,7 @@
     "systemSmall": {
       "alignment": "center",
       "padding": 12,
-      "spacing": 4,
+      "spacing": 5,
       "elementOrder": ["emoji", "eventName", "primaryValue", "unit"],
       "showsEventName": true,
       "showsEmoji": true,
@@ -25,7 +25,7 @@
     "systemMedium": {
       "alignment": "center",
       "padding": 16,
-      "spacing": 8,
+      "spacing": 10,
       "elementOrder": ["emoji", "eventName", "primaryValue", "unit"],
       "showsEventName": true,
       "showsEmoji": true,
@@ -41,7 +41,7 @@
       "showsUnit": true
     },
     "accessoryRectangular": {
-      "alignment": "leading",
+      "alignment": "center",
       "padding": 6,
       "spacing": 4,
       "elementOrder": ["emoji", "eventName", "primaryValue", "unit"],

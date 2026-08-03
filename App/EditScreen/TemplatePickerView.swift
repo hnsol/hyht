@@ -10,6 +10,10 @@ struct TemplatePickerView: View {
     let eventName: String
     let eventEmoji: String
     let deadline: Date
+    let completion: CompletionStyle
+    let isCompleted: Bool
+
+    private let previewSize: CGFloat = 92
 
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
@@ -24,13 +28,16 @@ struct TemplatePickerView: View {
 
     private func card(for template: WidgetTemplate) -> some View {
         let isSelected = template.id == selectedID
-        let snapshot = CountdownCalculator.snapshot(deadline: deadline, now: Date())
-        let style = StyleResolver.resolve(
+        let snapshot = PreviewSnapshotFactory.snapshot(
+            deadline: deadline,
+            now: Date(),
+            isCompleted: isCompleted
+        )
+        let style = StyleResolver.resolveTemplateDriven(
             template: template,
-            overrides: .none,
-            completion: nil,
+            completion: completion,
             family: .systemSmall,
-            isCompleted: snapshot.mode == .done
+            isCompleted: isCompleted
         )
         return Button {
             selectedID = template.id
@@ -44,7 +51,9 @@ struct TemplatePickerView: View {
                     family: .systemSmall,
                     renderingContext: .preview
                 )
-                .frame(width: 80, height: 80)
+                .frame(width: 158, height: 158)
+                .scaleEffect(previewSize / 158)
+                .frame(width: previewSize, height: previewSize)
                 .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
 
                 Text(template.displayName)

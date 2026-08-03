@@ -42,7 +42,7 @@ struct AccessoryRectangularLayout: View {
 
             HStack(spacing: 4) {
                 Text(snapshot.primaryText)
-                    .font(.system(size: Self.valueFontSize, weight: .semibold, design: style.fontDesign.swiftUIDesign))
+                    .font(.system(size: Self.valueFontSize, weight: style.fontWeight.swiftUIWeight, design: style.fontDesign.swiftUIDesign))
                     .lineLimit(1)
                     .minimumScaleFactor(0.5)
                 if style.showsUnit, let unit = CountdownUnitFormatter.unitLabel(for: snapshot.mode, style: .short) {

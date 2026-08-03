@@ -80,29 +80,29 @@ public struct WidgetTemplate: Codable, Equatable, Sendable {
             backgroundColorHex: "#FFFFFF",
             primaryTextColorHex: "#000000",
             secondaryTextColorHex: "#6E6E73",
-            primaryValueFontSize: 36,
+            primaryValueFontSize: 38,
             eventNameFontSize: 13,
             emojiFontSize: 18,
             fontWeight: .regular,
-            fontDesign: .default
+            fontDesign: .monospaced
         ),
         families: [
             .systemSmall: WidgetFamilyDefinition(
-                alignment: .center,
-                padding: 12,
-                spacing: 4,
-                elementOrder: [.emoji, .eventName, .primaryValue, .unit],
+                alignment: .leading,
+                padding: 14,
+                spacing: 6,
+                elementOrder: [.eventName, .primaryValue, .unit, .emoji],
                 showsEventName: true,
-                showsEmoji: true,
+                showsEmoji: false,
                 showsUnit: true
             ),
             .systemMedium: WidgetFamilyDefinition(
-                alignment: .center,
+                alignment: .leading,
                 padding: 16,
-                spacing: 6,
+                spacing: 8,
                 elementOrder: [.emoji, .eventName, .primaryValue, .unit],
                 showsEventName: true,
-                showsEmoji: true,
+                showsEmoji: false,
                 showsUnit: true
             ),
             .accessoryCircular: WidgetFamilyDefinition(
@@ -120,7 +120,7 @@ public struct WidgetTemplate: Codable, Equatable, Sendable {
                 spacing: 2,
                 elementOrder: [.emoji, .eventName, .primaryValue, .unit],
                 showsEventName: true,
-                showsEmoji: true,
+                showsEmoji: false,
                 showsUnit: true
             )
         ],
@@ -133,7 +133,7 @@ public struct WidgetTemplate: Codable, Equatable, Sendable {
             eventNameFontSize: 14,
             messageFontSize: 20,
             emojiFontSize: 32,
-            alignment: .center
+            alignment: .leading
         )
     )
 }

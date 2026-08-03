@@ -33,7 +33,7 @@ struct CompletionLayoutView: View {
 
     private func homeLayout(spacing: Double) -> some View {
         VStack(alignment: style.alignment.horizontalAlignment, spacing: spacing) {
-            if style.showsEmoji, let emoji = style.completionEmoji {
+            if let emoji = style.completionEmoji, !emoji.isEmpty {
                 Text(emoji)
                     .font(.system(size: style.emojiFontSize))
             }

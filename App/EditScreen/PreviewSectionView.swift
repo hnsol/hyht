@@ -9,7 +9,6 @@ struct PreviewSectionView: View {
     let eventEmoji: String
     let deadline: Date
     let template: WidgetTemplate
-    let overrides: StyleOverrides
     let completion: CompletionStyle
 
     @Binding var family: WidgetFamilyKey
@@ -17,17 +16,19 @@ struct PreviewSectionView: View {
 
     var body: some View {
         VStack(spacing: 12) {
-            WidgetPreviewBox(family: family) {
-                CountdownWidgetView(
-                    snapshot: snapshot,
-                    eventName: eventName,
-                    eventEmoji: eventEmoji,
-                    style: style,
-                    family: family,
-                    renderingContext: .preview
-                )
+            ZStack {
+                WidgetPreviewBox(family: family) {
+                    CountdownWidgetView(
+                        snapshot: snapshot,
+                        eventName: eventName,
+                        eventEmoji: eventEmoji,
+                        style: style,
+                        family: family,
+                        renderingContext: .preview
+                    )
+                }
             }
-            .frame(maxWidth: .infinity)
+            .frame(maxWidth: .infinity, minHeight: 158, maxHeight: 158)
 
             Picker("Size", selection: $family) {
                 ForEach(WidgetFamilyKey.allCases.filter { $0 != .accessoryRectangular }, id: \.self) { family in
@@ -43,26 +44,19 @@ struct PreviewSectionView: View {
     }
 
     private var snapshot: CountdownSnapshot {
-        if isCompleted {
-            return CountdownCalculator.snapshot(deadline: Date().addingTimeInterval(-60), now: Date())
-        }
-        return CountdownCalculator.snapshot(deadline: deadline, now: Date())
-    }
-
-    // The deadline may already be in the past, in which case the snapshot is
-    // .done regardless of the preview toggle; the style must resolve the
-    // completion values or the completion layout would render empty.
-    private var effectiveCompleted: Bool {
-        isCompleted || snapshot.mode == .done
+        PreviewSnapshotFactory.snapshot(
+            deadline: deadline,
+            now: Date(),
+            isCompleted: isCompleted
+        )
     }
 
     private var style: ResolvedWidgetStyle {
-        StyleResolver.resolve(
+        StyleResolver.resolveTemplateDriven(
             template: template,
-            overrides: overrides,
             completion: completion,
             family: family,
-            isCompleted: effectiveCompleted
+            isCompleted: isCompleted
         )
     }
 }

@@ -8,7 +8,8 @@ import HyhtCore
 ///
 /// The entry carries everything the view needs to draw itself without
 /// touching the file system again: the pre-computed `CountdownSnapshot` for
-/// `date` plus the template and user overrides read once per timeline.
+/// `date` plus the selected template and completion content read once per
+/// timeline.
 /// Style resolution itself happens in the view, because the concrete widget
 /// family is only known there.
 struct HyhtEntry: TimelineEntry {
@@ -17,7 +18,6 @@ struct HyhtEntry: TimelineEntry {
     let eventName: String
     let eventEmoji: String
     let template: WidgetTemplate
-    let overrides: StyleOverrides
     let completion: CompletionStyle
 }
 
@@ -75,7 +75,6 @@ struct HyhtProvider: TimelineProvider {
             eventName: state.event.name,
             eventEmoji: state.event.emoji,
             template: TemplateStore.template(id: state.selectedTemplateID),
-            overrides: state.overrides,
             completion: state.completion
         )
     }
@@ -122,9 +121,8 @@ struct HyhtWidgetEntryView: View {
     }
 
     private var style: ResolvedWidgetStyle {
-        StyleResolver.resolve(
+        StyleResolver.resolveTemplateDriven(
             template: entry.template,
-            overrides: entry.overrides,
             completion: entry.completion,
             family: familyKey,
             isCompleted: isCompleted

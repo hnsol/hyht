@@ -16,6 +16,27 @@ import Foundation
 /// (`systemSmall`/`systemMedium`); accessory families keep the template's
 /// own colors. Inputs are never mutated.
 public enum StyleResolver {
+    /// Resolves a template-led appearance for the simplified editor.
+    /// Persisted appearance overrides are intentionally excluded, while the
+    /// user's completion message and emoji remain editable.
+    public static func resolveTemplateDriven(
+        template: WidgetTemplate,
+        completion: CompletionStyle?,
+        family: WidgetFamilyKey,
+        isCompleted: Bool
+    ) -> ResolvedWidgetStyle {
+        let completionContent = completion.map {
+            CompletionStyle(message: $0.message, emoji: $0.emoji)
+        }
+        return resolve(
+            template: template,
+            overrides: .none,
+            completion: completionContent,
+            family: family,
+            isCompleted: isCompleted
+        )
+    }
+
     public static func resolve(
         template: WidgetTemplate,
         overrides: StyleOverrides,

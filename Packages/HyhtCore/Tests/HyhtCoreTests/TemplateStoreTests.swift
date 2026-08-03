@@ -104,85 +104,77 @@ final class TemplateStoreTests: XCTestCase {
         XCTAssertEqual(decoded, template)
     }
 
-    // MARK: - "Show everything" template policy regression tests
-    //
-    // All bundled templates (and `WidgetTemplate.fallback`, which mirrors
-    // `minimal`) are expected to follow the same "show every element"
-    // policy. `systemMedium` and `accessoryRectangular` use a fixed layout
-    // (a horizontal split and a fixed two-line stack, respectively) rather
-    // than `elementOrder`, so `elementOrder` is not asserted for them here
-    // -- their display requirements are covered by layout-level visual
-    // confirmation instead (see the plan's 目視確認 section).
+    // MARK: - Distinct template roles
 
-    /// All four family definitions under test: the three bundled templates
-    /// plus `WidgetTemplate.fallback` (which must mirror `minimal`'s shape).
-    private var allTemplateDefinitions: [(name: String, template: WidgetTemplate)] {
-        TemplateStore.loadBuiltinTemplates().map { ($0.id, $0) } + [("fallback", WidgetTemplate.fallback)]
+    func testMinimalIsSparseMonospacedAndLeadingAligned() throws {
+        let minimal = TemplateStore.template(id: "minimal")
+        let small = try XCTUnwrap(minimal.families[.systemSmall])
+        let medium = try XCTUnwrap(minimal.families[.systemMedium])
+
+        XCTAssertEqual(minimal.style.fontDesign, .monospaced)
+        XCTAssertEqual(minimal.style.primaryValueFontSize, 38)
+        XCTAssertEqual(small.alignment, .leading)
+        XCTAssertEqual(small.padding, 14)
+        XCTAssertEqual(small.spacing, 6)
+        XCTAssertEqual(small.elementOrder, [.eventName, .primaryValue, .unit, .emoji])
+        XCTAssertFalse(small.showsEmoji)
+        XCTAssertEqual(medium.alignment, .leading)
+        XCTAssertFalse(medium.showsEmoji)
     }
 
-    func testSystemSmallElementOrderContainsEachElementExactlyOnce() {
-        for (name, template) in allTemplateDefinitions {
-            let order = template.families[.systemSmall]?.elementOrder ?? []
-            for kind: ElementKind in [.emoji, .eventName, .primaryValue, .unit] {
-                XCTAssertEqual(
-                    order.filter { $0 == kind }.count, 1,
-                    "\(name) systemSmall elementOrder should contain \(kind) exactly once, got \(order)"
-                )
-            }
-        }
-    }
-
-    func testSystemSmallAndMediumShowAllThreeElements() {
-        for (name, template) in allTemplateDefinitions {
-            for family: WidgetFamilyKey in [.systemSmall, .systemMedium] {
-                guard let definition = template.families[family] else {
-                    XCTFail("\(name) is missing \(family)")
-                    continue
-                }
-                XCTAssertTrue(definition.showsEventName, "\(name) \(family) should show event name")
-                XCTAssertTrue(definition.showsEmoji, "\(name) \(family) should show emoji")
-                XCTAssertTrue(definition.showsUnit, "\(name) \(family) should show unit")
-            }
-        }
-    }
-
-    func testAllTemplatesUseCenterAlignmentForSystemMedium() {
-        for (name, template) in allTemplateDefinitions {
-            XCTAssertEqual(
-                template.families[.systemMedium]?.alignment, .center,
-                "\(name) systemMedium alignment should be center"
-            )
-        }
-    }
-
-    func testBoldSystemMediumAlignmentIsCenter() {
+    func testBoldMakesTheNumberLargestAndKeepsEverySmallElement() throws {
         let bold = TemplateStore.template(id: "bold")
-        XCTAssertEqual(bold.families[.systemMedium]?.alignment, .center)
+        let small = try XCTUnwrap(bold.families[.systemSmall])
+        let medium = try XCTUnwrap(bold.families[.systemMedium])
+
+        XCTAssertEqual(bold.style.fontWeight, .black)
+        XCTAssertEqual(bold.style.primaryValueFontSize, 52)
+        XCTAssertEqual(small.alignment, .center)
+        XCTAssertEqual(small.padding, 8)
+        XCTAssertEqual(small.spacing, 2)
+        XCTAssertEqual(small.elementOrder, [.primaryValue, .unit, .eventName, .emoji])
+        XCTAssertTrue(small.showsEventName)
+        XCTAssertTrue(small.showsEmoji)
+        XCTAssertTrue(small.showsUnit)
+        XCTAssertEqual(medium.alignment, .center)
+        XCTAssertEqual(medium.spacing, 2)
     }
 
-    func testAccessoryCircularShowsUnitOnlyWithFixedElementOrderAndCenterAlignment() {
-        for (name, template) in allTemplateDefinitions {
+    func testSoftLeadsWithALargeEmojiAndRoundedTypography() throws {
+        let soft = TemplateStore.template(id: "soft")
+        let small = try XCTUnwrap(soft.families[.systemSmall])
+        let medium = try XCTUnwrap(soft.families[.systemMedium])
+
+        XCTAssertEqual(soft.style.fontDesign, .rounded)
+        XCTAssertEqual(soft.style.primaryValueFontSize, 32)
+        XCTAssertEqual(soft.style.emojiFontSize, 30)
+        XCTAssertEqual(small.alignment, .center)
+        XCTAssertEqual(small.padding, 12)
+        XCTAssertEqual(small.spacing, 5)
+        XCTAssertEqual(small.elementOrder, [.emoji, .eventName, .primaryValue, .unit])
+        XCTAssertTrue(small.showsEmoji)
+        XCTAssertEqual(medium.alignment, .center)
+        XCTAssertEqual(medium.spacing, 10)
+    }
+
+    func testFallbackMirrorsMinimalAppearanceAndFamilies() {
+        let minimal = TemplateStore.template(id: "minimal")
+        XCTAssertEqual(WidgetTemplate.fallback.style, minimal.style)
+        XCTAssertEqual(WidgetTemplate.fallback.families, minimal.families)
+        XCTAssertEqual(WidgetTemplate.fallback.completion, minimal.completion)
+    }
+
+    func testAccessoryCircularShowsOnlyValueAndUnit() {
+        for template in TemplateStore.loadBuiltinTemplates() {
             guard let definition = template.families[.accessoryCircular] else {
-                XCTFail("\(name) is missing accessoryCircular")
+                XCTFail("\(template.id) is missing accessoryCircular")
                 continue
             }
-            XCTAssertFalse(definition.showsEventName, "\(name) accessoryCircular should not show event name")
-            XCTAssertFalse(definition.showsEmoji, "\(name) accessoryCircular should not show emoji")
-            XCTAssertTrue(definition.showsUnit, "\(name) accessoryCircular should show unit")
-            XCTAssertEqual(definition.elementOrder, [.primaryValue, .unit], "\(name) accessoryCircular elementOrder")
-            XCTAssertEqual(definition.alignment, .center, "\(name) accessoryCircular alignment")
-        }
-    }
-
-    func testAccessoryRectangularShowsAllThreeElements() {
-        for (name, template) in allTemplateDefinitions {
-            guard let definition = template.families[.accessoryRectangular] else {
-                XCTFail("\(name) is missing accessoryRectangular")
-                continue
-            }
-            XCTAssertTrue(definition.showsEventName, "\(name) accessoryRectangular should show event name")
-            XCTAssertTrue(definition.showsEmoji, "\(name) accessoryRectangular should show emoji")
-            XCTAssertTrue(definition.showsUnit, "\(name) accessoryRectangular should show unit")
+            XCTAssertFalse(definition.showsEventName)
+            XCTAssertFalse(definition.showsEmoji)
+            XCTAssertTrue(definition.showsUnit)
+            XCTAssertEqual(definition.elementOrder, [.primaryValue, .unit])
+            XCTAssertEqual(definition.alignment, .center)
         }
     }
 }

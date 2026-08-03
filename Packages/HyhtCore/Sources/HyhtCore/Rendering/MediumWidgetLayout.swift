@@ -36,7 +36,7 @@ struct MediumWidgetLayout: View {
         HStack(spacing: style.spacing / 2) {
             if style.showsEmoji {
                 Text(eventEmoji)
-                    .font(.system(size: style.eventNameFontSize))
+                    .font(.system(size: style.emojiFontSize))
             }
             if style.showsEventName, hasEventName {
                 Text(eventName)

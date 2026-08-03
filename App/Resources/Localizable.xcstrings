@@ -238,6 +238,22 @@
         }
       }
     },
+    "Display Text" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Display Text"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "表示文字"
+          }
+        }
+      }
+    },
     "Detail Settings" : {
       "extractionState" : "stale",
       "localizations" : {

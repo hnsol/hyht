@@ -25,6 +25,37 @@ final class StyleResolverTests: XCTestCase {
         XCTAssertNotEqual(minimalResolved, boldResolved)
     }
 
+    func testTemplateDrivenResolutionUsesTemplateAppearanceAndUserCompletionContent() {
+        let customizedCompletion = CompletionStyle(
+            message: "Custom finish",
+            emoji: "🥳",
+            backgroundColorHex: "#00FF00",
+            primaryTextColorHex: "#FF00FF",
+            secondaryTextColorHex: "#0000FF",
+            eventNameFontSize: 99,
+            messageFontSize: 98,
+            emojiFontSize: 97,
+            alignment: .trailing
+        )
+
+        let resolved = StyleResolver.resolveTemplateDriven(
+            template: minimal,
+            completion: customizedCompletion,
+            family: .systemSmall,
+            isCompleted: true
+        )
+
+        XCTAssertEqual(resolved.backgroundColorHex, minimal.completion.backgroundColorHex)
+        XCTAssertEqual(resolved.primaryTextColorHex, minimal.completion.primaryTextColorHex)
+        XCTAssertEqual(resolved.secondaryTextColorHex, minimal.completion.secondaryTextColorHex)
+        XCTAssertEqual(resolved.eventNameFontSize, minimal.completion.eventNameFontSize)
+        XCTAssertEqual(resolved.messageFontSize, minimal.completion.messageFontSize)
+        XCTAssertEqual(resolved.emojiFontSize, minimal.completion.emojiFontSize)
+        XCTAssertEqual(resolved.alignment, minimal.completion.alignment)
+        XCTAssertEqual(resolved.completionMessage, "Custom finish")
+        XCTAssertEqual(resolved.completionEmoji, "🥳")
+    }
+
     // MARK: - Color-only overrides preserve layout
 
     func testColorOnlyOverridePreservesAlignmentAndLayout() {
