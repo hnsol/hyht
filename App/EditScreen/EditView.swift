@@ -118,14 +118,8 @@ struct EditView: View {
     @ViewBuilder
     private var saveStatusView: some View {
         switch viewModel.saveStatus {
-        case .idle:
+        case .idle, .saving, .saved:
             EmptyView()
-        case .saving:
-            Label("Saving...", systemImage: "arrow.triangle.2.circlepath")
-                .foregroundStyle(.secondary)
-        case .saved:
-            Label("Saved", systemImage: "checkmark.circle")
-                .foregroundStyle(.secondary)
         case .failed(let message):
             Label("Save failed: \(message)", systemImage: "exclamationmark.triangle")
                 .foregroundStyle(.red)

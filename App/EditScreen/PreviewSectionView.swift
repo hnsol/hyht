@@ -3,7 +3,7 @@ import SwiftUI
 
 /// The always-visible preview at the top of the edit screen: renders the
 /// same `CountdownWidgetView` used by the real widget, with controls to
-/// switch the previewed family and toggle the completed state.
+/// switch the previewed family and editing mode.
 struct PreviewSectionView: View {
     let eventName: String
     let eventEmoji: String
@@ -38,7 +38,12 @@ struct PreviewSectionView: View {
             .pickerStyle(.segmented)
             .labelsHidden()
 
-            Toggle("Completed", isOn: $isCompleted)
+            Picker("Preview Mode", selection: $isCompleted) {
+                Text("Active").tag(false)
+                Text("Completed").tag(true)
+            }
+            .pickerStyle(.segmented)
+            .labelsHidden()
         }
         .padding(.vertical, 4)
     }
