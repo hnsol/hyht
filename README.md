@@ -1,7 +1,7 @@
 <table align="center">
   <tr>
     <td align="center"><img src="docs/images/icon.png" width="200" alt="Hyht Lightアプリアイコン — 白地に黒のケルトノット風の結び目模様"><br><sub>Light</sub></td>
-    <td align="center"><img src="App/Resources/Assets.xcassets/AppIcon.appiconset/AppIcon-1024-dark.png" width="200" alt="Hyht Darkアプリアイコン — 黒地に白のケルトノット風の結び目模様"><br><sub>Dark</sub></td>
+    <td align="center"><img src="docs/images/icon-dark.png" width="200" alt="Hyht Darkアプリアイコン — 黒地に白のケルトノット風の結び目模様"><br><sub>Dark</sub></td>
   </tr>
 </table>
 

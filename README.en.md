@@ -1,7 +1,7 @@
 <table align="center">
   <tr>
     <td align="center"><img src="docs/images/icon.png" width="200" alt="Hyht Light app icon — a black Celtic-knot motif on white"><br><sub>Light</sub></td>
-    <td align="center"><img src="App/Resources/Assets.xcassets/AppIcon.appiconset/AppIcon-1024-dark.png" width="200" alt="Hyht Dark app icon — a white Celtic-knot motif on black"><br><sub>Dark</sub></td>
+    <td align="center"><img src="docs/images/icon-dark.png" width="200" alt="Hyht Dark app icon — a white Celtic-knot motif on black"><br><sub>Dark</sub></td>
   </tr>
 </table>
 
