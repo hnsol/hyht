@@ -1,6 +1,9 @@
-<p align="center">
-  <img src="docs/images/icon.png" width="200" alt="Hyht アプリアイコン — ケルトノット風のハートと三角形を組み合わせたモノクロの結び目模様">
-</p>
+<table align="center">
+  <tr>
+    <td align="center"><img src="docs/images/icon.png" width="200" alt="Hyht Lightアプリアイコン — 白地に黒のケルトノット風の結び目模様"><br><sub>Light</sub></td>
+    <td align="center"><img src="App/Resources/Assets.xcassets/AppIcon.appiconset/AppIcon-1024-dark.png" width="200" alt="Hyht Darkアプリアイコン — 黒地に白のケルトノット風の結び目模様"><br><sub>Dark</sub></td>
+  </tr>
+</table>
 
 # Hyht — 待ち遠しい時間を、見るたび楽しめるiOSカウントダウンウィジェット
 

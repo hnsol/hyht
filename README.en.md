@@ -1,6 +1,9 @@
-<p align="center">
-  <img src="docs/images/icon.png" width="200" alt="Hyht app icon — a monochrome Celtic-knot motif combining a heart and a triangle">
-</p>
+<table align="center">
+  <tr>
+    <td align="center"><img src="docs/images/icon.png" width="200" alt="Hyht Light app icon — a black Celtic-knot motif on white"><br><sub>Light</sub></td>
+    <td align="center"><img src="App/Resources/Assets.xcassets/AppIcon.appiconset/AppIcon-1024-dark.png" width="200" alt="Hyht Dark app icon — a white Celtic-knot motif on black"><br><sub>Dark</sub></td>
+  </tr>
+</table>
 
 # Hyht — an iOS countdown widget that makes waiting something to enjoy
 
