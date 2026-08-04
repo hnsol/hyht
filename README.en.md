@@ -92,6 +92,7 @@ Decimal rounding is fully compatible with JavaScript's `Number.prototype.toFixed
 
 - **People facing an exam or deadline** — "10.08 days" lives on your Home Screen, then turns into hours and minutes so the approaching day feels real.
 - **People waiting for a trip or a fan event** — an emoji and event name turn the waiting itself into part of the memory.
+- **People who want to focus on the one thing they are most excited about** — you can save only one event, giving the most anticipated day a place of its own.
 - **Scriptable users considering a migration** — the same display logic (down to identical rounding) without the script maintenance.
 - **Developers learning SwiftUI/WidgetKit** — a readable real-world example (~4,200 lines) of App Group sharing, timeline planning, and template-driven rendering.
 
@@ -140,7 +141,7 @@ xcodebuild test -project Hyht.xcodeproj -scheme Hyht \
 
 ### Can I track multiple events?
 
-**No — exactly one event.** Hyht is designed around keeping one most-important day close. If you need to manage many events, a commercial countdown app is a better fit.
+**No — exactly one event.** Hyht is intentionally built around saving the one event you are most excited about and keeping that day close. If you need to manage several events side by side, a commercial countdown app is a better fit.
 
 ### Does Hyht support Lock Screen widgets?
 
@@ -168,7 +169,7 @@ xcodebuild test -project Hyht.xcodeproj -scheme Hyht \
 
 ## Limitations
 
-- **Single event only** — no list of events, no switching between several.
+- **Single event only** — no list of events, no switching between several. This is intentional: Hyht is for focusing on the one event you are most excited about.
 - **No App Store distribution** — building from source is assumed; handing it to non-developers requires TestFlight or similar.
 - **accessoryRectangular not enabled** — the Lock Screen rectangular layout exists in code but is not declared.
 - **Advanced font/color settings UI not exposed** — the implementation (`DetailSettingsView` / `CompletionSettingsView`) exists but is unreachable in this version; customize via the template JSON instead.
