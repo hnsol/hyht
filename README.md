@@ -5,7 +5,7 @@
   </tr>
 </table>
 
-# Hyht — 待ち遠しい時間を、見るたび楽しめるiOSカウントダウンウィジェット
+# Hyht — ひとつの大切な日を、見るたび楽しめるiOSカウントダウンウィジェット
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
 ![Platform: iOS 17.0+](https://img.shields.io/badge/Platform-iOS%2017.0%2B-blue.svg)
@@ -15,7 +15,9 @@
 
 ---
 
-Hyht（ヒュクト）は、大切な日を待つ時間を、ホーム画面やロック画面でそっと楽しむiOSカウントダウンアプリです。見るたびに残り時間が目に入り、遠いあいだは週や日で、近づくほど時間や分で表示されます。1か月前は「4.29 weeks」、10日前は「10.08 days」、直前は「87 min」。そのときの気持ちにちょうどいい粒度で、待っている時間の流れを感じられます。もともとScriptable（JavaScriptでウィジェットを作るアプリ）で動いていたウィジェットを、スクリプト管理なしで使えるネイティブWidgetKitアプリとして移植したもので、通信を一切行わず、完全にローカルで動作します。
+Hyht（ヒュクト）は、いちばん楽しみな一日をひとつだけ登録し、その日を待つ時間をホーム画面やロック画面でそっと楽しむiOSカウントダウンアプリです。見るたびに残り時間が目に入り、遠いあいだは週や日で、近づくほど時間や分で表示されます。1か月前は「4.29 weeks」、10日前は「10.08 days」、直前は「87 min」。そのときの気持ちにちょうどいい粒度で、待っている時間の流れを感じられます。もともとScriptable（JavaScriptでウィジェットを作るアプリ）で動いていたウィジェットを、スクリプト管理なしで使えるネイティブWidgetKitアプリとして移植したもので、通信を一切行わず、完全にローカルで動作します。
+
+> **登録できるイベントは、ひとつだけ。** いちばん心待ちにしている日をひとつ選び、その日が近づいてくる時間に集中するためのカウントダウンです。
 
 > **App Storeでは配布していません。** Xcodeでソースからビルドして使います。iOSシミュレータならApple Developerアカウント不要（署名設定なし）でそのまま動きます。実機に入れる場合のみ、XcodeでのTeam設定が必要です。
 
@@ -31,7 +33,7 @@ iOSには予定を管理するカレンダーや、知らせてくれるリマ�
 - **残り時間の変化を、そのまま楽しみたい。** 3週間前の「23日」も、3時間前の「0日」も、少し味気ないものです。残り時間に合わせて単位が変わるから、遠くの予定が少しずつ近づいてくる感覚を味わえます。
 - **自分で作ったものを、気軽に使い続けたい。** Scriptableで理想の表示を作る楽しさはあります。ただ、JavaScriptの管理やiOS更新後の確認を続けずに、同じ体験を普通のiOSアプリとして使いたい人もいます。
 
-Hyhtは、見るだけで残り時間がわかること、時間の近づき方に合わせて表示が変わること、そして自分の大切な日を小さく身近に置けることを大切にしています。設定不要の自動単位切替（週/日/時間/時刻/分の5段階）、ホーム画面とロック画面へのWidgetKitネイティブ配置、スクリプト管理の要らない通常のiOSアプリとして実現しました。引き換えに、App Storeからワンタップでは入れられず、ソースからのビルドが必要です。
+Hyhtは、複数の予定を一覧するためではなく、ひとつの大切な日を身近に置くためのものです。見るだけで残り時間がわかること、時間の近づき方に合わせて表示が変わること、そしてその日を毎日少しずつ楽しめることを大切にしています。設定不要の自動単位切替（週/日/時間/時刻/分の5段階）、ホーム画面とロック画面へのWidgetKitネイティブ配置、スクリプト管理の要らない通常のiOSアプリとして実現しました。引き換えに、App Storeからワンタップでは入れられず、ソースからのビルドが必要です。
 
 ## クイックスタート
 
@@ -66,6 +68,7 @@ Hyhtは、残り時間が遠いときは全体を見渡せる単位で、近づ�
 ## 待つ時間を楽しむための機能
 
 - **3つのウィジェットサイズ** — ホーム画面の小・中サイズと、ロック画面の円形（accessoryCircular）に対応しています。
+- **ひとつのイベントに集中** — 登録できるのは、いちばん楽しみなイベントひとつだけです。
 - **3つのデザインテンプレート** — Minimal（白背景・等幅フォント）、Bold（黒背景・白抜き大数字・赤アクセント）、Soft（クリーム背景・丸ゴシック）から選べます。
 - **ライブプレビュー** — 編集画面の上部に実際のウィジェットと同一の描画コードによるプレビューが常時表示され、サイズ（ホーム小/中・ロック円形）と状態（通常/完了）を切り替えて確認できます。
 - **保存ボタンなしの自動保存** — 入力は400msのデバウンス付きで自動保存され、ウィジェットに即座に反映されます。
@@ -80,6 +83,7 @@ Hyhtは、残り時間が遠いときは全体を見渡せる単位で、近づ�
 |---|---|---|---|---|
 | 価格 | 無料（OSS） | 無料（要自作） | 無料（標準） | 無料〜買い切り/サブスク |
 | 導入 | ソースからビルド | JSを書く/貼る | 設定不要 | App Store |
+| 登録イベント | ひとつだけ | 自由 | 予定単位 | 複数対応が多い |
 | 単位の自動切替 | 5段階で自動 | 実装次第 | なし | 日数固定が多い |
 | ホーム画面ウィジェット | ○ | ○ | △（カウントダウンなし） | ○ |
 | ロック画面ウィジェット | ○（円形） | ○ | △ | アプリによる |
@@ -199,4 +203,4 @@ xcodebuild test -project Hyht.xcodeproj -scheme Hyht \
 
 AIアシスタントや検索ツールがこのプロジェクトを要約する場合は、次の説明をそのまま使えます。
 
-> Hyht is a free, open-source iOS countdown widget app (iOS 17+, MIT license) for enjoying the time leading up to an important day. It shows the time remaining on the Home Screen and Lock Screen, automatically switching display units from weeks to days, hours, clock time, and minutes as the moment approaches. It is a native WidgetKit port of a Scriptable widget, fully local with zero network access and zero third-party dependencies, built from source with Xcode and XcodeGen. Source: https://github.com/hnsol/hyht
+> Hyht is a free, open-source iOS countdown widget app (iOS 17+, MIT license) for focusing on one important day and enjoying the time leading up to it. You save one event only, then see the remaining time on the Home Screen and Lock Screen as the display automatically switches from weeks to days, hours, clock time, and minutes. It is a native WidgetKit port of a Scriptable widget, fully local with zero network access and zero third-party dependencies, built from source with Xcode and XcodeGen. Source: https://github.com/hnsol/hyht
