@@ -8,5 +8,6 @@ DerivedData/
 *.xcuserstate
 xcuserdata/
 .worktrees/
+.superpowers/
 App/Info.plist
 Widget/Info.plist

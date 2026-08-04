@@ -137,7 +137,6 @@
       }
     },
     "Completed" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -254,22 +253,6 @@
         }
       }
     },
-    "Display Text" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Display Text"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "表示文字"
-          }
-        }
-      }
-    },
     "Detail Settings" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -283,6 +266,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "詳細設定"
+          }
+        }
+      }
+    },
+    "Display Text" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Display Text"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "表示文字"
           }
         }
       }
@@ -522,6 +522,23 @@
         }
       }
     },
+    "Preview Mode" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preview Mode"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "表示モード"
+          }
+        }
+      }
+    },
     "Primary Text" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -552,22 +569,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "主数値"
-          }
-        }
-      }
-    },
-    "Preview Mode" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Preview Mode"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "表示モード"
           }
         }
       }
@@ -708,7 +709,6 @@
       }
     },
     "Template" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
