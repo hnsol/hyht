@@ -1,13 +1,25 @@
+# OS
+.DS_Store
+
+# Xcode / Swift build artifacts
 *.xcodeproj
 *.xcworkspace
 build/
 build17/
 DerivedData/
-.DS_Store
 .swiftpm/
 *.xcuserstate
 xcuserdata/
+Packages/HyhtCore/.swiftpm/
+
+# Local worktrees and tool state
 .worktrees/
 .superpowers/
+.claude/
+
+# Local-only review and scratch materials
+.local/
+
+# Generated local plist files
 App/Info.plist
 Widget/Info.plist
